@@ -1,3 +1,3 @@
 # NameItShipIt (Under Development)
 
-Launch your idea, today.
+Launch your idea, today...
