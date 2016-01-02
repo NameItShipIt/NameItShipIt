@@ -1,7 +1,54 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>NameItShipIt</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Simple Domainr Search Demo</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- simple Domainr API CSS styling, via CDNJS -->
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/domainr-search-box/0.0.5/domainr-search-box.css" />
+    
+    <!-- more style tweaks -->
+    <style>
+      body { text-align: center; }
+      body, input { font-family: "helvetica neue", helvetica, sans-serif; font-size: 18px; }
+      #example { position: relative; width: 320px; margin: 40px auto; text-align: left; }
+      #example input { box-sizing: border-box; width: 100%; border: 1px solid #ccc; border-radius: 2px; padding: 3px 10px; appearance: none; }
+      #example input:focus { outline: none; }
+      #results { position: relative; width: 100%; }
+    </style>
+  </head>
+
+  <body>
+    <div id="example">
+      <h1>Simple Domainr Search Demo</h1>
+      
+      <!-- search box input -->
+      <input type="text" id="search" name="search" placeholder="search all domains" autocomplete="off" autofocus autocapitalize="off" autocorrect="off">
+      
+      <!-- search results div, which will be populated -->
+      <div id="results"></div>
+    </div>
+    
+    <!-- include the Domainr JS, via CDNJS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/domainr-search-box/0.0.5/domainr-search-box.min.js"></script>
+
+    <!-- configure the search box -->
+    <script>
+      new domainr.SearchBox({
+        mashapeKey: 'yourMashapeKey',
+        // clientId: 'yourClientId', // or alternatively your clientId (for high-volume customers), in which case you don't need a Mashape key
+        observe: document.getElementById('search'),
+        renderTo: document.getElementById('results'),
+        limit: 10, // limit to 10 results
+        registrar: 'namecheap.com', // only return a registrar's supported TLDs
+        defaults: [ 'coffee', 'rocks', 'co', 'io' ], // include these TLDs by default
+        onSelect: function(result) {
+          window.open('https://api.domainr.com/v2/register?registrar=namecheap.com&domain=' + result.domain);
+        }
+      });
+    </script>
+  </body>
 </html>
