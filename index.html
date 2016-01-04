@@ -43,8 +43,8 @@
         observe: document.getElementById('search'),
         renderTo: document.getElementById('results'),
         limit: 100, // limit to 100 results
-        registrar: 'namecheap.com', // only return a registrar's supported TLDs
-        defaults: [ 'coffee', 'rocks', 'co', 'io' ], // include these TLDs by default
+        // registrar: 'namecheap.com', // only return a registrar's supported TLDs
+        // defaults: [ 'coffee', 'rocks', 'co', 'io' ], // include these TLDs by default
         onSelect: function(result) {
           window.open('https://api.domainr.com/v2/register?registrar=namecheap.com&domain=' + result.domain);
         }
