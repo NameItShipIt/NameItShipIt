@@ -42,7 +42,7 @@
         // clientId: 'yourClientId', // or alternatively your clientId (for high-volume customers), in which case you don't need a Mashape key
         observe: document.getElementById('search'),
         renderTo: document.getElementById('results'),
-        limit: 10, // limit to 10 results
+        limit: 100, // limit to 100 results
         registrar: 'namecheap.com', // only return a registrar's supported TLDs
         defaults: [ 'coffee', 'rocks', 'co', 'io' ], // include these TLDs by default
         onSelect: function(result) {
